@@ -1,38 +1,53 @@
 # Hunyuan3D Glasses Adaptation
 
-Ce projet adapte le modèle Hunyuan3D pour reconstruire des lunettes 3D à partir d'images 2D.
+Ce projet adapte le modèle Hunyuan3D pour reconstruire des lunettes 3D à partir d'images 2D. Il permet de générer des modèles 3D de lunettes à partir de simples images 2D, avec des matériaux réalistes et des fonctionnalités d'essayage virtuel.
 
 ## Contenu
 - `src/` : Scripts principaux
 - `data/` : Données d'entraînement et de test
-- `notebooks/` : Pipeline Jupyter
+- `examples/` : Images d'exemple pour tester le modèle
 - `checkpoints/` : Sauvegarde du modèle
-- `results/` : Visualisations
+- `results/` : Visualisations et résultats générés
+- `kaggle_endpoint.py` : Script pour utiliser le projet sur Kaggle
+- `kaggle_setup.py` : Script d'installation pour Kaggle
+- `run_glasses_pipeline.py` : Script principal pour exécuter le pipeline complet
 
-## Installation
+## Installation simplifiée
 
-1. Clonez le dépôt Hunyuan3D-2 :
+La méthode la plus simple pour installer et utiliser ce projet est d'utiliser le script `run_glasses_pipeline.py` :
+
 ```bash
-git clone https://github.com/Tencent/Hunyuan3D-2.git
-cd Hunyuan3D-2
+# Cloner le dépôt
+git clone https://github.com/amin8452/Pfa.git
+cd Pfa
+
+# Installer les dépendances et télécharger le modèle
+python run_glasses_pipeline.py --mode setup
+
+# Collecter des données d'images de lunettes
+python run_glasses_pipeline.py --mode data
+
+# Lancer l'interface web
+python run_glasses_pipeline.py --mode web
 ```
 
-2. Installez les dépendances :
+## Installation manuelle
+
+Si vous préférez une installation manuelle :
+
+1. Installez les dépendances :
 ```bash
 pip install -r requirements.txt
-pip install -e .
-# Pour la texture
-cd hy3dgen/texgen/custom_rasterizer
-python setup.py install
-cd ../../..
-cd hy3dgen/texgen/differentiable_renderer
-python setup.py install
-cd ../../..
 ```
 
-3. Copiez les fichiers de notre adaptation dans le répertoire du projet :
+2. Téléchargez le modèle Hunyuan3D-2 :
 ```bash
-cp -r /chemin/vers/adaptation/* .
+python kaggle_setup.py --download_hunyuan
+```
+
+3. Créez les répertoires nécessaires :
+```bash
+python kaggle_setup.py --create_dirs
 ```
 
 ## Préparation des données
@@ -180,6 +195,49 @@ Pour lancer les deux interfaces :
 ```bash
 python glasses_app.py
 ```
+
+## Utilisation sur Kaggle
+
+Ce projet est conçu pour fonctionner facilement sur Kaggle. Voici comment l'utiliser :
+
+1. Créez un nouveau notebook Kaggle avec accélérateur GPU (T4 recommandé)
+
+2. Copiez et collez le code suivant :
+
+```python
+# Cloner le dépôt GitHub
+!git clone https://github.com/amin8452/Pfa.git
+%cd Pfa
+
+# Configurer l'environnement
+!python kaggle_setup.py --all
+
+# Afficher les exemples d'images disponibles
+import matplotlib.pyplot as plt
+from PIL import Image
+import os
+
+example_dir = "examples"
+examples = [f for f in os.listdir(example_dir) if f.endswith(('.jpg', '.png'))]
+
+plt.figure(figsize=(15, 10))
+for i, example in enumerate(examples):
+    img = Image.open(os.path.join(example_dir, example))
+    plt.subplot(2, 2, i+1)
+    plt.imshow(img)
+    plt.title(example)
+    plt.axis('off')
+plt.tight_layout()
+plt.show()
+
+# Lancer l'endpoint Kaggle
+!python kaggle_endpoint.py --use_hunyuan
+```
+
+3. Exécutez le notebook
+4. Utilisez le lien public généré pour accéder à l'interface web
+5. Téléchargez une image de lunettes ou utilisez les exemples fournis
+6. Générez votre modèle 3D et téléchargez-le
 
 ## Limitations et travaux futurs
 
