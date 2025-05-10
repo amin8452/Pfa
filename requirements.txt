@@ -1,0 +1,7 @@
+torch
+trimesh
+pytorch3d
+numpy
+scipy
+matplotlib
+opencv-python
