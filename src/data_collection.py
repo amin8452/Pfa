@@ -90,6 +90,34 @@ def scrape_images(data_root, num_images, image_sources):
             "https://images.pexels.com/photos/1687719/pexels-photo-1687719.jpeg",
             "https://images.unsplash.com/photo-1609902726285-00668009f004",
             "https://images.unsplash.com/photo-1577744062836-dde739cb8089"
+        ],
+        'designer_glasses': [
+            "https://images.pexels.com/photos/2228559/pexels-photo-2228559.jpeg",
+            "https://images.pexels.com/photos/2765894/pexels-photo-2765894.jpeg",
+            "https://images.pexels.com/photos/2587464/pexels-photo-2587464.jpeg",
+            "https://images.unsplash.com/photo-1583394838336-acd977736f90",
+            "https://images.unsplash.com/photo-1546180572-28e937c8128b"
+        ],
+        'vintage_glasses': [
+            "https://images.pexels.com/photos/1499480/pexels-photo-1499480.jpeg",
+            "https://images.pexels.com/photos/2690323/pexels-photo-2690323.jpeg",
+            "https://images.pexels.com/photos/1192609/pexels-photo-1192609.jpeg",
+            "https://images.unsplash.com/photo-1577803645773-f96470509666",
+            "https://images.unsplash.com/photo-1582142407894-ec8a1f6b0f6b"
+        ],
+        'rimless_glasses': [
+            "https://images.pexels.com/photos/2589653/pexels-photo-2589653.jpeg",
+            "https://images.pexels.com/photos/2589652/pexels-photo-2589652.jpeg",
+            "https://images.pexels.com/photos/2599245/pexels-photo-2599245.jpeg",
+            "https://images.unsplash.com/photo-1584036553516-bf83210aa16c",
+            "https://images.unsplash.com/photo-1599838082471-71ca8597304e"
+        ],
+        'kids_glasses': [
+            "https://images.pexels.com/photos/1912868/pexels-photo-1912868.jpeg",
+            "https://images.pexels.com/photos/1068205/pexels-photo-1068205.jpeg",
+            "https://images.pexels.com/photos/1068207/pexels-photo-1068207.jpeg",
+            "https://images.unsplash.com/photo-1588413453099-f1acf8a4a37c",
+            "https://images.unsplash.com/photo-1588392382834-a891154bca4d"
         ]
     }
 
